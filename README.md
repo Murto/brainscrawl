@@ -1,3 +1,3 @@
-# brainsquall
+# brainscrawl
 
-brainsquall is a brainfuck interpreter written in C++
+brainscrawl is a brainfuck interpreter written in C++
