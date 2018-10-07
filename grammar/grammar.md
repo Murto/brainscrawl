@@ -16,8 +16,9 @@ MOVE_LEFT  = "<" ;
 MOVE_RIGHT = ">" ;
 INCREMENT  = "+" ;
 DECREMENT  = "-" ;
-OUPUT      = "." ;
+OUTPUT     = "." ;
 INPUT      = "," ;
 LOOP_BEGIN = "[" ;
 LOOP_END   = "]" ;
+EOF        = ? End of file ? ;
 ```
