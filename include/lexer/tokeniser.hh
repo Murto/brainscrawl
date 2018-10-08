@@ -50,9 +50,9 @@ public:
                                                                                         };
 
     // Variables for storing the input and location
-    decltype(*_curr) input;
-    decltype(_line) line;
-    decltype(_column) column;
+    char input;
+    int line;
+    int column;
 
     // While the end of input has not been reached
     while (_curr != _end)
