@@ -167,6 +167,7 @@ public:
           else
           {
             it->pop_front();
+            possible.push_back(*it);
             ++it;
           }
         }
@@ -181,6 +182,19 @@ private:
   lexer::tokeniser<input_it_type> _tokeniser;
 
 };
+
+
+/**
+ * Returns a parser constructed with the given tokeniser
+ * Helpful as the user does not have to explicitly define the constructor template argument
+ *
+ * t - The given tokeniser
+**/
+template <typename input_it_type>
+parser<input_it_type> make_parser(lexer::tokeniser<input_it_type> t)
+{
+  return parser<input_it_type>(t);
+}
 
 
 }
