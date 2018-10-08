@@ -1,100 +1,44 @@
-#include <exception>
+#include "token.hh"
+#include "tokeniser.hh"
+#include "parser.hh"
+
+
 #include <fstream>
 #include <iostream>
 #include <iterator>
-#include <map>
+#include <string>
 
-template <typename input_it_t>
-void parse(input_it_t&& start, const input_it_t&& end, std::map<long long, char>& tape, long long pointer = 0)
-{
-  if (start == end)
-  {
-    return;
-  }
-
-  do
-  {
-    char symbol = *start;
-    switch (symbol)
-    {
-      case '>':
-      {
-        ++pointer;
-        break;
-      }
-      case '<':
-      {
-        --pointer;
-        break;
-      }
-      case '+':
-      {
-        ++tape[pointer];
-        break;
-      }
-      case '-':
-      {
-        --tape[pointer];
-        break;
-      }
-      case '.': 
-      {
-        std::cout << tape[pointer];
-        break;
-      }
-      case ',': 
-      {
-        std::cin >> tape[pointer];
-        break;
-      }
-      case '[': 
-      {
-        std::string buffer;
-        long long count = 1;
-        while (++start != end)
-        {
-          if (*start == '[')
-          {
-            ++count;
-          }
-          else if (*start == ']' && !--count)
-          {
-            break;
-          }
-          buffer += *start;
-        }
-        if (start == end)
-        {
-          throw std::runtime_error("[ found without matching ]");
-        }
-        while (tape[pointer])
-        {
-          parse(buffer.begin(), buffer.end(), tape, pointer);
-        }
-        break;
-      }
-      case ']':
-      {
-        throw std::runtime_error("] found without matching [");
-      }
-    }
-  }
-  while (++start != end);
-}
 
 int main(int argc, char* argv[])
 {
-  if (argc < 1)
+
+  // If there are no arguments then exit
+  if (argc != 3)
   {
-    throw std::runtime_error("No file specified");
+    std::cout << argv[0] << " [-i file | -c file]\n";
+    return 1;
   }
 
-  std::ifstream input(argv[1]);
-  if (!input)
+  std::string option(argv[1]);
+  std::ifstream file(argv[2]);
+
+  if (option != "-i" && option != "-c")
   {
-    throw std::runtime_error("File could not be opened");
+    std::cout << "Invalid option\n";
+    return 1;
+  }
+  
+  if (!file)
+  {
+    std::cout << "Invalid file\n";
+    return 1;
   }
 
-  std::map<long long, char> tape;
-  parse(std::istream_iterator<char>(input), std::istream_iterator<char>(), tape);
+  // Create a tokeniser
+  auto t = lexer::make_tokeniser(std::istream_iterator<char>(file), std::istream_iterator<char>());
+
+  // Create a parser
+  auto p = parser::make_parser(t);
+
+  p.parse();
 }
