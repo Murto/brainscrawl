@@ -27,64 +27,64 @@ std::vector<std::vector<modifier_wrapper>> productions(nonterminal_classificatio
   const static modifier_wrapper input(nonterminal_classification::INPUT);
   const static modifier_wrapper loop_begin(nonterminal_classification::LOOP_BEGIN);
   const static modifier_wrapper loop_end(nonterminal_classification::LOOP_END);
-  const static modifier_wrapper eof(nonterminal_classification::EOI);
+  const static modifier_wrapper eoi(nonterminal_classification::EOI);
   
   // Create map representing productions
   const static std::unordered_map<nonterminal_classification, std::vector<std::vector<modifier_wrapper>>> prods = {
-                                                                                                                                   {
-                                                                                                                                     nonterminal_classification::PROGRAM,
-                                                                                                                                     {
-                                                                                                                                       {
-                                                                                                                                         commands,
-                                                                                                                                         eof
-                                                                                                                                       }
-                                                                                                                                     }
-                                                                                                                                   },
+                                                                                                                    {
+                                                                                                                      nonterminal_classification::PROGRAM,
+                                                                                                                      {
+                                                                                                                        {
+                                                                                                                          commands,
+                                                                                                                          eoi
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    },
 
-                                                                                                                                   {
-                                                                                                                                     nonterminal_classification::COMMAND,
-                                                                                                                                     {
-                                                                                                                                       {
-                                                                                                                                         move_left
-                                                                                                                                       },
+                                                                                                                    {
+                                                                                                                      nonterminal_classification::COMMAND,
+                                                                                                                      {
+                                                                                                                        {
+                                                                                                                          move_left
+                                                                                                                        },
 
-                                                                                                                                       {
-                                                                                                                                         move_right
-                                                                                                                                       },
+                                                                                                                        {
+                                                                                                                          move_right
+                                                                                                                        },
 
-                                                                                                                                       {
-                                                                                                                                         increment
-                                                                                                                                       },
+                                                                                                                        {
+                                                                                                                          increment
+                                                                                                                        },
 
-                                                                                                                                       {
-                                                                                                                                         decrement
-                                                                                                                                       },
+                                                                                                                        {
+                                                                                                                          decrement
+                                                                                                                        },
 
-                                                                                                                                       {
-                                                                                                                                         output
-                                                                                                                                       },
+                                                                                                                        {
+                                                                                                                          output
+                                                                                                                        },
 
-                                                                                                                                       {
-                                                                                                                                         input
-                                                                                                                                       },
+                                                                                                                        {
+                                                                                                                          input
+                                                                                                                        },
 
-                                                                                                                                       {
-                                                                                                                                         loop
-                                                                                                                                       }
-                                                                                                                                     }
-                                                                                                                                   },
+                                                                                                                        {
+                                                                                                                          loop
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    },
 
-                                                                                                                                   {
-                                                                                                                                     nonterminal_classification::LOOP,
-                                                                                                                                     {
-                                                                                                                                       {
-                                                                                                                                         loop_begin,
-                                                                                                                                         commands,
-                                                                                                                                         loop_end
-                                                                                                                                       }
-                                                                                                                                     }
-                                                                                                                                   }
-                                                                                                                                 };
+                                                                                                                    {
+                                                                                                                      nonterminal_classification::LOOP,
+                                                                                                                      {
+                                                                                                                        {
+                                                                                                                          loop_begin,
+                                                                                                                          commands,
+                                                                                                                          loop_end
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  };
   
   // Find nonterminal_classification production
   auto class_prods = prods.find(classification);
