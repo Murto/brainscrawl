@@ -40,5 +40,10 @@ int main(int argc, char* argv[])
   // Create a parser
   auto p = parser::make_parser(t);
 
+  // TODO: Remove this (added for testing purposes)
   p.parse();
+
+  // TODO: Add intermediate representation
+  // TODO: Add interpreter for intermediate representation
+  // TODO: Add compiler from intermediate representation to mips
 }
