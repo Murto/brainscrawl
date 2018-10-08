@@ -49,19 +49,14 @@ public:
                                                                                           { ']' , nonterminal_classification::LOOP_END }
                                                                                         };
 
-    // Variables for storing the input and location
-    char input;
-    int line;
-    int column;
-
     // While the end of input has not been reached
     while (_curr != _end)
     {
 
       // Record current input character and location
-      input = *_curr;
-      line = _line;
-      column = _column;
+      auto input = *_curr;
+      auto line = _line;
+      auto column = _column;
       
       // Increment input iterator
       ++_curr;
@@ -92,7 +87,7 @@ public:
     }
     
     // If we have reached end of input then return an EOI token
-    return token(nonterminal_classification::EOI, line, column);
+    return token(nonterminal_classification::EOI, _line, _column);
     
   }
   
