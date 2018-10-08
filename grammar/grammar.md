@@ -20,5 +20,5 @@ OUTPUT     = "." ;
 INPUT      = "," ;
 LOOP_BEGIN = "[" ;
 LOOP_END   = "]" ;
-EOF        = ? End of file ? ;
+EOF        = ? End of input ? ;
 ```
