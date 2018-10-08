@@ -17,6 +17,7 @@ enum class nonterminal_classification
   OUTPUT,
   INPUT,
   LOOP_BEGIN,
-  LOOP_END
+  LOOP_END,
+  EOI
 
 };
