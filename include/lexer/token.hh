@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "nonterminal_class.hh"
+#include "nonterminal_classification.hh"
 
 
 namespace lexer
@@ -32,7 +32,7 @@ public:
   /**
    * Returns the classification of the token
   **/
-  const nonterminal_classification& classification() noexcept const
+  const nonterminal_classification& classification() const noexcept
   {
     return _classification;
   }
@@ -41,7 +41,7 @@ public:
   /**
    * Returns the line number of the token
   **/
-  const int& line() noexcept const
+  const int& line() const noexcept
   {
     return _line;
   }
@@ -50,7 +50,7 @@ public:
   /**
    * Returns the column number of the token
   **/
-  const int& column() noexcept const
+  const int& column() const noexcept
   {
     return _column;
   }
@@ -60,8 +60,8 @@ private:
 
 
   nonterminal_classification _classification;
-  int line;
-  int column;
+  int _line;
+  int _column;
 
 };
 
